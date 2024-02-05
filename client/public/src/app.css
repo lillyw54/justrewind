@@ -1,0 +1,49 @@
+/* app.css */
+
+/* Reset some default styles for better cross-browser consistency */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Apply a global font and basic styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Define styles for your navigation bar */
+nav {
+  background-color: #007bff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Define styles for your form elements */
+form {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+input,
+button {
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Add more styles as needed for your specific components and layout */
