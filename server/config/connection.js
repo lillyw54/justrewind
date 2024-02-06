@@ -1,16 +1,6 @@
-const Sequelize = require('sequelize');
+const mongoose = require('mongoose');
 
-// Create a new Sequelize instance
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  {
-    host: process.env.DB_HOST,
-    dialect: 'mysql',
-    port: process.env.DB_PORT || 3306,
-    logging: false,
-  }
-);
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/tech-friends');
 
-module.exports = sequelize;
+module.exports = mongoose.connection;
+
