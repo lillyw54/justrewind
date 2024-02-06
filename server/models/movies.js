@@ -5,8 +5,7 @@ const Movie = sequelize.define('Movie', {
   // Define model attributes here
 });
 
-module.exports = Movie;
-
+module.exports = Movie; 
 
 
 
