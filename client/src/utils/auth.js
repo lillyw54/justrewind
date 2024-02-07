@@ -1,33 +1,37 @@
-// auth.js
+import decode from 'jwt-decode';
 
-import jwtDecode from 'jwt-decode'; // You might need to install jwt-decode using: npm install jwt-decode
+class AuthService {
+  getProfile() {
+    return decode(this.getToken());
+  }
 
-// Key for storing the authentication token in localStorage
-const AUTH_TOKEN_KEY = 'authToken';
+  loggedIn() {
+    const token = this.getToken();
+    return token && !this.isTokenExpired(token) ? true : false;
+  }
 
-// Function to set the authentication token in localStorage
-export const setAuthToken = (token) => {
-  localStorage.setItem(AUTH_TOKEN_KEY, token);
-};
+  isTokenExpired(token) {
+    const decoded = decode(token);
+    if (decoded.exp < Date.now() / 1000) {
+      localStorage.removeItem('id_token');
+      return true;
+    }
+    return false;
+  }
 
-// Function to get the authentication token from localStorage
-export const getAuthToken = () => {
-  return localStorage.getItem(AUTH_TOKEN_KEY);
-};
+  getToken() {
+    return localStorage.getItem('id_token');
+  }
 
-// Function to remove the authentication token from localStorage
-export const removeAuthToken = () => {
-  localStorage.removeItem(AUTH_TOKEN_KEY);
-};
+  login(idToken) {
+    localStorage.setItem('id_token', idToken);
+    window.location.assign('/');
+  }
 
-// Function to check if the user is authenticated
-export const isAuthenticated = () => {
-  const authToken = getAuthToken();
-  return authToken && jwtDecode(authToken).exp > Date.now() / 1000;
-};
+  logout() {
+    localStorage.removeItem('id_token');
+    window.location.reload();
+  }
+}
 
-// Function to decode the authentication token
-export const decodeAuthToken = () => {
-  const authToken = getAuthToken();
-  return authToken ? jwtDecode(authToken) : null;
-};
+export default new AuthService();
