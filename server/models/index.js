@@ -1,9 +1,3 @@
-const User = require('./User');
-// Import other models here
+const Profile = require('./Profile');
 
-// Define associations between models here
-
-module.exports = {
-  User,
-  // Export other models here
-};
+module.exports = { Profile };
