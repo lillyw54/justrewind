@@ -1,20 +1,10 @@
-// SignupForm.jsx
-
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { SIGNUP_MUTATION } from './graphql/mutations';
 
 const SignupForm = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleFirstNameChange = (e) => {
-    setFirstName(e.target.value);
-  };
-
-  const handleLastNameChange = (e) => {
-    setLastName(e.target.value);
-  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -24,36 +14,28 @@ const SignupForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const [signup, { loading, error }] = useMutation(SIGNUP_MUTATION);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your signup/authentication logic here (e.g., API call, validation, etc.)
-    console.log('First Name:', firstName, 'Last Name:', lastName, 'Email:', email, 'Password:', password);
+
+    try {
+      const { data } = await signup({
+        variables: { email, password },
+      });
+
+      console.log('Signup successful', data);
+      // Redirect to the desired page or perform any other actions
+    } catch (error) {
+      console.log('Error signing up', error);
+      // Display an error message or perform any other actions
+    }
   };
 
   return (
     <div>
-      <h2>Signup</h2>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={handleFirstNameChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={handleLastNameChange}
-            required
-          />
-        </div>
         <div>
           <label htmlFor="email">Email:</label>
           <input
@@ -74,7 +56,10 @@ const SignupForm = () => {
             required
           />
         </div>
-        <button type="submit">Signup</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Signing up...' : 'Sign Up'}
+        </button>
+        {error && <p>Error: {error.message}</p>}
       </form>
     </div>
   );
