@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_MUTATION } from './graphql/mutations';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -12,10 +14,22 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const [login, { loading, error }] = useMutation(LOGIN_MUTATION);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your authentication logic here (e.g., API call, validation, etc.)
-    console.log('Email:', email, 'Password:', password);
+
+    try {
+      const { data } = await login({
+        variables: { email, password },
+      });
+
+      console.log('Login successful', data);
+      // Redirect to the desired page or perform any other actions
+    } catch (error) {
+      console.log('Invalid credentials', error);
+      // Display an error message or perform any other actions
+    }
   };
 
   return (
@@ -42,7 +56,10 @@ const LoginForm = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
+        {error && <p>Error: {error.message}</p>}
       </form>
     </div>
   );
