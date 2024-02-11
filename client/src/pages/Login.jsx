@@ -2,11 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
+import { LOGIN_USER } from '../utils/mutations'; // Import GraphQL mutation
 
 import Auth from '../utils/auth';
 
-const Login = (props) => {
+const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -49,7 +49,7 @@ const Login = (props) => {
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
+                Success! You may now proceed{' '}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
