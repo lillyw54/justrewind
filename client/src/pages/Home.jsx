@@ -16,7 +16,7 @@ const Home = () => {
           ) : (
             <ProfileList
               profiles={profiles}
-              title="Here's the current roster of friends..."
+              title="Collection of classic movies"
             />
           )}
         </div>
