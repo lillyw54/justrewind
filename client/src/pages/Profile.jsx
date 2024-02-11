@@ -39,7 +39,7 @@ const Profile = () => {
   return (
     <div>
       <h2 className="card-header">
-        {profileId ? `${profile.name}'s` : 'Your'} profile
+        {profileId ? `${profile.name}'s` : 'Your'} Favorites
       </h2>
     </div>
   );
