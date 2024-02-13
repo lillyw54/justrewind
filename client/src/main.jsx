@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
-
 import App from './app.jsx'
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Error from './pages/Error';
-
 const router = createBrowserRouter([
   {
     path: '/',

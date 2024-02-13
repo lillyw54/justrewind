@@ -19,6 +19,7 @@ const Header = () => {
         <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
           Check out our collection of classic movies!
         </p>
+
         <div>
           {Auth.loggedIn() ? (
             <>

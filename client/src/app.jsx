@@ -11,6 +11,7 @@ import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import './app.css';
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -43,6 +44,8 @@ function App() {
         <Footer />
       </div>
     </ApolloProvider>
+
+    
   );
 }
 
