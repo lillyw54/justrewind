@@ -23,7 +23,6 @@ const Header = () => {
         <input type="search" id="query" name="q" placeholder="Just Rewind!" input/>
         <button>Search</button>
         </form>
-
         </p>
       
        
