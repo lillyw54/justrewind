@@ -16,9 +16,15 @@ const Header = () => {
             Just Rewind
           </h1>
         </Link>
-        <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
+        <p className="m-0" style={{ fontSize: '2.50rem', fontWeight: '700' }}>
           Check out our collection of classic movies!
         </p>
+      
+        <form id="form"> 
+        <input type="search" id="query" name="q" placeholder="Just Rewind!" input/>
+        <button>Search</button>
+        </form>
+
 
         <div>
           {Auth.loggedIn() ? (
