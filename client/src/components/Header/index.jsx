@@ -17,7 +17,7 @@ const Header = () => {
 
           <img src='/src/assets/justrewind.png' width="" height="" alt="movie" id="movie"></img>
 
-            Just Rewind
+            Just Rewind 
 
           </h1>
         </Link>
@@ -25,7 +25,7 @@ const Header = () => {
           Check out our collection of classic movies!
 
         <form id="form"> 
-        <input type="search" id="query" name="q" placeholder="Just Rewind!" input/>
+        <input type="search" id="query" name="q" placeholder="Just Rewind With Us!" input/>
         <button>Search</button>
         </form>
         </p>

@@ -3,6 +3,9 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  color: #081f93;
+  
+  
 }
 
 @keyframes logo-spin {
@@ -21,26 +24,21 @@
 }
 
 .card {
-  padding: 2em;
+  padding: 3em;
 }
 
-.read-the-docs {
-  color: #888;
+header {
+color: #081f93;
+  
 }
 
-.search-wrapper {
-  color:  darkgreen;
-  background-color: black;
+footer {
+color: #081f93;
 }
 
-.search-btn {
-  color: black;
-  background-color: darkgreen;
-}
-
-.search-form {
-width: 1000px;
-color: blue;
+button {
+ color: #dbe31a;
+ background-color: #081f93;
 }
 
 img {
